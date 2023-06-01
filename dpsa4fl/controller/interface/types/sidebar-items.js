@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["ControllerStateImmut","State that does not change once the controller is initialized."],["ControllerStateMut","State that changes during the controller lifetime."],["ControllerStatePermanent","State that is preserved between rounds."],["ControllerStateRound","State that is required only for a single round."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["NoopSpan","A no-op instance of a `Span`."],["NoopTextMapPropagator","A no-op instance of an `TextMapPropagator`."],["NoopTracer","A no-op instance of a `Tracer`."],["NoopTracerProvider","A no-op instance of a `TracerProvider`."]]};

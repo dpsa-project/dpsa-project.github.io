@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="`tracing-stackdriver`"><meta name="keywords" content="rust, rustlang, rust-lang, tracing_stackdriver"><title>tracing_stackdriver - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../tracing_stackdriver/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../tracing_stackdriver/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate tracing_stackdriver</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.7.2</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">tracing_stackdriver</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/tracing_stackdriver/lib.rs.html#1-15">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="tracing-stackdriver"><a href="#tracing-stackdriver"><code>tracing-stackdriver</code></a></h2>
+<p><img src="https://github.com/NAlexPear/tracing-stackdriver/actions/workflows/check.yml/badge.svg?branch=master" alt="Pre-release Checks" />
+<img src="https://img.shields.io/crates/v/tracing-stackdriver" alt="Crates.io" /></p>
+<p><a href="https://docs.rs/tracing/0.1.13/tracing/"><code>tracing</code></a> is a scoped, structured logging and diagnostic system based on emitting <a href="https://docs.rs/tracing/0.1.13/tracing/#events"><code>Event</code></a>s in the context of potentially-nested <a href="https://docs.rs/tracing/0.1.13/tracing/#spans"><code>Span</code></a>s across asynchronous <code>await</code> points. These properties make <code>tracing</code> ideal for use with <a href="https://cloud.google.com/logging/docs/structured-logging">Google Cloud Operations Suite structured logging</a> (formerly Stackdriver).</p>
+<p>This crate provides a <a href="https://docs.rs/tracing-subscriber/0.2.4/tracing_subscriber/fmt/struct.Layer.html"><code>Layer</code></a> for use with a <code>tracing</code> <a href="https://docs.rs/tracing-subscriber/0.2.4/tracing_subscriber/struct.Registry.html"><code>Registry</code></a> that formats <code>tracing</code> Spans and Events into properly-structured JSON for consumption by Google Operations Logging through the <a href="https://cloud.google.com/logging/docs/structured-logging"><code>jsonPayload</code></a> field. This includes the following behaviors and enhancements:</p>
+<ol>
+<li><code>rfc3339</code>-formatted timestamps for all Events</li>
+<li><code>severity</code> (in <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity"><code>LogSeverity</code></a> format) derived from <code>tracing</code> <a href="https://docs.rs/tracing/0.1.13/tracing/struct.Level.html"><code>Level</code></a></li>
+<li><code>target</code> derived from the Event <code>target</code> <a href="https://docs.rs/tracing/0.1.13/tracing/struct.Metadata.html"><code>Metadata</code></a></li>
+<li>Span <code>name</code> and custom fields included under a <code>span</code> key</li>
+<li>automatic nesting of <code>http_request.</code>-prefixed event fields</li>
+<li>automatic nesting of <code>labels.</code>-prefixed event fields, re-written as a <a href="https://cloud.google.com/logging/docs/agent/logging/configuration#special-fields">special field</a>.</li>
+<li>automatic re-writing of <code>insert_id</code>s as a <a href="https://cloud.google.com/logging/docs/agent/logging/configuration#special-fields">special field</a>.</li>
+<li>automatic camelCase-ing of all field keys (e.g. <code>field_name</code> -&gt; <code>fieldName</code>, or <code>field.name</code> -&gt; <code>fieldName</code>)</li>
+<li><a href="https://docs.rs/valuable/latest/valuable/"><code>valuable</code></a> support, including an <code>HttpRequest</code> helper <code>struct</code></li>
+<li><a href="https://cloud.google.com/trace">Cloud Trace</a> support derived from <a href="https://opentelemetry.io">OpenTelemetry</a> Span and <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#FIELDS.trace">Trace IDs</a>.</li>
+</ol>
+<h4 id="examples"><a href="#examples">Examples</a></h4><h5 id="basic-setup"><a href="#basic-setup">Basic setup:</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>tracing_subscriber::{layer::SubscriberExt, Registry};
+
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span>stackdriver = tracing_stackdriver::layer(); <span class="comment">// writes to std::io::Stdout
+    </span><span class="kw">let </span>subscriber = Registry::default().with(stackdriver);
+
+    tracing::subscriber::set_global_default(subscriber).expect(<span class="string">&quot;Could not set up global logger&quot;</span>);
+}</code></pre></div>
+<h5 id="custom-write-location"><a href="#custom-write-location">Custom write location:</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>tracing_subscriber::{layer::SubscriberExt, Registry};
+
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span>make_writer = || std::io::Stderr;
+    <span class="kw">let </span>stackdriver = tracing_stackdriver::layer().with_writer(make_writer); <span class="comment">// writes to std::io::Stderr
+    </span><span class="kw">let </span>subscriber = Registry::default().with(stackdriver);
+
+    tracing::subscriber::set_global_default(subscriber).expect(<span class="string">&quot;Could not set up global logger&quot;</span>);
+}</code></pre></div>
+<h5 id="with-httprequest-fields"><a href="#with-httprequest-fields">With <code>httpRequest</code> fields:</a></h5>
+<p>See all available fields <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#HttpRequest">here</a>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// requires working global setup (see above examples)
+
+</span><span class="kw">use </span>hyper::Request;
+
+<span class="kw">fn </span>handle_request(request: Request) {
+    <span class="kw">let </span>method = <span class="kw-2">&amp;</span>request.method();
+    <span class="kw">let </span>uri = <span class="kw-2">&amp;</span>request.uri();
+
+    <span class="macro">tracing::info!</span>(
+      http_request.request_method = %method,
+      http_request.request_url = %uri,
+      <span class="string">&quot;Request received&quot;
+    </span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;severity&quot;: &quot;INFO&quot;,
+    //   &quot;httpRequest&quot;: {
+    //     &quot;requestMethod&quot;: &quot;GET&quot;,
+    //     &quot;requestUrl&quot;: &quot;/some/url/from/request&quot;
+    //    },
+    //   &quot;message&quot;: &quot;Request received&quot;
+    // }
+</span>}</code></pre></div>
+<h5 id="with-labels-fields"><a href="#with-labels-fields">With <code>labels</code> fields:</a></h5>
+<p>A key/value map of stringified labels mapped to the <code>logging.googleapis.com/labels</code> <a href="https://cloud.google.com/logging/docs/agent/logging/configuration#special-fields">special field</a>. More information about <code>labels</code> can be found <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#FIELDS.labels">here</a>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// requires working global setup (see above examples)
+
+</span><span class="kw">fn </span>main() {
+    <span class="macro">tracing::info!</span>(
+      labels.thread_count = <span class="number">3</span>,
+      labels.is_production = <span class="bool-val">true</span>,
+      labels.note = <span class="string">&quot;A short note&quot;</span>,
+      <span class="string">&quot;Application starting&quot;
+    </span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;message&quot;: &quot;Application starting&quot;,
+    //   &quot;logging.googleapis.com/labels&quot;: {
+    //     &quot;threadCount&quot;: &quot;3&quot;,
+    //     &quot;isProduction&quot;: &quot;true&quot;,
+    //     &quot;note&quot;: &quot;A short note&quot;,
+    //   }
+    // }
+</span>}</code></pre></div>
+<h5 id="with-insert_id-field"><a href="#with-insert_id-field">With <code>insert_id</code> field:</a></h5>
+<p>A stringified <code>insert_id</code> mapped to the <code>logging.googleapis.com/insertId</code> <a href="https://cloud.google.com/logging/docs/agent/logging/configuration#special-fields">special field</a>. More information about <code>insertId</code> can be found <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#FIELDS.insert_id">here</a>. This is an optional field, as the Logging API assigns its own unique identifier to this field if <code>insert_id</code> is omitted.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="comment">// requires working global setup (see above examples)
+
+</span><span class="kw">fn </span>main() {
+    <span class="macro">tracing::info!</span>(
+      insert_id = <span class="number">1234</span>,
+      <span class="string">&quot;Application starting&quot;
+    </span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;message&quot;: &quot;Application starting&quot;,
+    //   &quot;logging.googleapis.com/insertId&quot;: &quot;1234&quot;
+    // }
+</span>}</code></pre></div>
+<h4 id="with-more-specific-logseverity-levels"><a href="#with-more-specific-logseverity-levels">With more specific <code>LogSeverity</code> levels:</a></h4>
+<p>Google supports a slightly different set of severity levels than <code>tracing</code>. <code>tracing</code> levels are automatically mapped to <code>LogSeverity</code> levels, but you can customize the level beyond the intersection of <code>tracing</code> levels and <code>LogSeverity</code> levels by using the provided <code>LogSeverity</code> level with a <code>severity</code> key.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>tracing_stackdriver::LogSeverity;
+
+<span class="kw">fn </span>main() {
+    <span class="comment">// requires working global setup (see above examples)
+
+    </span><span class="macro">tracing::info!</span>(severity = %LogSeverity::Notice, <span class="string">&quot;Application starting&quot;</span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;severity&quot;: &quot;NOTICE&quot;,
+    //   &quot;message&quot;: &quot;Application starting&quot;
+    // }
+</span>}</code></pre></div>
+<h5 id="with-valuable-support"><a href="#with-valuable-support">With <code>valuable</code> support:</a></h5>
+<p><code>tracing_stackdriver</code> supports deeply-nested structured logging through <code>tracing</code>’s <a href="https://github.com/tokio-rs/tracing/discussions/1906">unstable <code>valuable</code> support</a>. In addition, <code>httpRequest</code> fields can be generated with the <code>HttpRequest</code> helper struct exported from this library for better compile-time checking of fields.</p>
+<p>To enable <code>valuable</code> support, use the <code>valuable</code> feature flag and compile your project with <code>RUSTFLAGS=&quot;--cfg tracing_unstable&quot;</code>.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code>
+<span class="comment">// requires working global setup (see above examples)
+
+</span><span class="kw">use </span>hyper::Request;
+<span class="kw">use </span>tracing_stackdriver::HttpRequest;
+<span class="kw">use </span>valuable::Valuable;
+
+<span class="attr">#[derive(Valuable)]
+</span><span class="kw">struct </span>StructuredLog {
+    service: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str,
+    handler: <span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>str
+}
+
+<span class="kw">fn </span>handle_request(request: Request) {
+    <span class="kw">let </span>http_request = HttpRequest {
+        request_method: request.method().into(),
+        request_url: request.uri().into(),
+        ..Default::default()
+    };
+
+    <span class="kw">let </span>structured_log = StructuredLog {
+        service: <span class="string">&quot;request_handlers&quot;</span>,
+        handler: <span class="string">&quot;handle_request&quot;</span>,
+    };
+
+    <span class="macro">tracing::info!</span>(
+      http_request = http_request.as_value(),
+      structured_log = structured_log.as_value(),
+      <span class="string">&quot;Request received&quot;
+    </span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;severity&quot;: &quot;INFO&quot;,
+    //   &quot;httpRequest&quot;: {
+    //     &quot;requestMethod&quot;: &quot;GET&quot;,
+    //     &quot;requestUrl&quot;: &quot;/some/url/from/request&quot;
+    //    },
+    //   &quot;structuredLog&quot;: {
+    //      &quot;service&quot;: &quot;request_handlers&quot;,
+    //      &quot;handler&quot;: &quot;handle_request&quot;
+    //    },
+    //   &quot;message&quot;: &quot;Request received&quot;
+    // }
+</span>}</code></pre></div>
+<h5 id="with-cloud-trace-support"><a href="#with-cloud-trace-support">With Cloud Trace support:</a></h5>
+<p><code>tracing_stackdriver</code> supports integration with <a href="https://cloud.google.com/trace">Cloud Trace</a> and <a href="https://opentelemetry.io">OpenTelemetry</a> via <a href="https://docs.rs/tracing-opentelemetry/latest/tracing_opentelemetry">tracing_opentelemetry</a> and outputs <a href="https://cloud.google.com/logging/docs/agent/logging/configuration#special-fields">special Cloud Trace <code>LogEntry</code> fields</a> for trace sampling and log correlation.</p>
+<p>To enable Cloud Trace support, you need to enable the <code>opentelemetry</code> feature flag and provide a <code>CloudTraceConfiguration</code> to the <code>with_cloud_trace</code> method of the layer.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>tracing_stackdriver::CloudTraceConfiguration;
+
+<span class="kw">fn </span>main() {
+    <span class="comment">// You may want to configure the `tracing_opentelemetry` layer to suit your needs,
+    // including the use of an additional tracer or exporter.
+    // See `tracing_opentelemetry`&#39;s doc for details.
+    </span><span class="kw">let </span>opentelemetry = tracing_opentelemetry::layer();
+
+    <span class="kw">let </span>stackdriver = tracing_stackdriver::layer()
+        .with_cloud_trace(CloudTraceConfiguration { project_id: <span class="string">&quot;my-project-id&quot; </span>});
+
+    <span class="kw">let </span>subscriber = tracing_subscriber::Registry::default()
+        .with(opentelemetry)
+        .with(stackdriver);
+
+    <span class="comment">// set up the root span to trigger Span/Trace ID generation
+    </span><span class="kw">let </span>root = <span class="macro">tracing::info_span!</span>(<span class="string">&quot;root&quot;</span>);
+    <span class="kw">let </span>_root = root.enter();
+    <span class="macro">tracing::info!</span>(<span class="string">&quot;Application starting&quot;</span>);
+
+    <span class="comment">// jsonPayload formatted as:
+    // {
+    //   &quot;time&quot;: &quot;some-timestamp&quot;
+    //   &quot;severity&quot;: &quot;INFO&quot;,
+    //   &quot;message&quot;: &quot;Application starting&quot;,
+    //   &quot;logging.googleapis.com/spanId&quot;: &quot;0000000000000000&quot;,
+    //   &quot;logging.googleapis.com/trace&quot;:&quot;projects/my-project-id/traces/0679686673a&quot;
+    // }
+</span>}</code></pre></div>
+<h5 id="with-source-locations"><a href="#with-source-locations">With Source Locations:</a></h5>
+<p>By default, <code>tracing_stackdriver</code> includes the source location of <code>tracing</code> events in a special <a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogEntrySourceLocation"><code>SourceLocation</code> composite field</a> on the emitted <code>LogEntry</code>. This behavior can be configured with the <code>with_source_location</code> method of the layer.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">fn </span>main() {
+    <span class="comment">// Source Locations are enabled by default, so they must be disabled by setting the configuration
+    // to &quot;false&quot; using with_source_location()
+    </span><span class="kw">let </span>stackdriver = tracing_stackdriver::layer().with_source_location(<span class="bool-val">false</span>);
+    <span class="kw">let </span>subscriber = tracing_subscriber::Registry::default().with(stackdriver);
+    tracing::subscriber::set_global_default(subscriber).expect(<span class="string">&quot;Could not set up global logger&quot;</span>);
+
+    <span class="comment">// tracing events from this point on will have their source location omitted
+</span>}</code></pre></div>
+</div></details><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.Layer.html" title="tracing_stackdriver::Layer struct">Layer</a></div><div class="item-right docblock-short">A tracing-compatible Layer implementation for Stackdriver</div></div></div><h2 id="enums" class="small-section-header"><a href="#enums">Enums</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="enum" href="enum.LogSeverity.html" title="tracing_stackdriver::LogSeverity enum">LogSeverity</a></div><div class="item-right docblock-short">The severity of the event described in a log entry, expressed as standard severity levels.
+<a href="https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#LogSeverity">See Google’s LogSeverity docs here</a>.</div></div></div><h2 id="functions" class="small-section-header"><a href="#functions">Functions</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="fn" href="fn.layer.html" title="tracing_stackdriver::layer fn">layer</a></div><div class="item-right docblock-short">Create a configurable stackdriver-specific Layer and event formatter</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="tracing_stackdriver" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>

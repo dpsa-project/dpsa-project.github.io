@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["CommonStateParametrization","The parameters for a training session, to be known by both controller and clients."],["Locations",""],["MainLocations",""],["ManagerLocations",""],["VdafParameter",""]]};

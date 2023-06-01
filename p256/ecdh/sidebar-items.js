@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["diffie_hellman","Low-level Elliptic Curve Diffie-Hellman (ECDH) function."]],"type":[["EphemeralSecret","NIST P-256 Ephemeral Diffie-Hellman Secret."],["SharedSecret","Shared secret value computed via ECDH key agreement."]]};

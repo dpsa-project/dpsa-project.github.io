@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["aggregator_api_handler","Returns a new handler for an instance of the aggregator API, backed by the given datastore, according to the given configuration."],["instrumented",""]],"struct":[["Config","Represents the configuration for an instance of the Aggregator API."]]};

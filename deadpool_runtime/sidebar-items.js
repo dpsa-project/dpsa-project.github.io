@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Runtime","Enumeration for picking a runtime implementation."],["SpawnBlockingError","Error of spawning a task on a thread where blocking is acceptable."]]};

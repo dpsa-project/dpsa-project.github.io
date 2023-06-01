@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":[["fixed","Create a fixed-point constant value which is parsed at compile time."]],"mod":[["types","Macros allowing to create constants for each available fixed-point type."]]};

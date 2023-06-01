@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["AggregationJobWriter","AggregationJobWriter contains the logic used to write aggregation jobs, both initially & on updates. It is used only by the Leader."]]};

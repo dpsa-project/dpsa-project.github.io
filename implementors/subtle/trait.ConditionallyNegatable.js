@@ -1,0 +1,4 @@
+(function() {var implementors = {
+"prio":[["impl&lt;F&gt; <a class=\"trait\" href=\"subtle/trait.ConditionallyNegatable.html\" title=\"trait subtle::ConditionallyNegatable\">ConditionallyNegatable</a> for <a class=\"struct\" href=\"prio/vdaf/poplar1/struct.Poplar1IdpfValue.html\" title=\"struct prio::vdaf::poplar1::Poplar1IdpfValue\">Poplar1IdpfValue</a>&lt;F&gt;<span class=\"where fmt-newline\">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class=\"trait\" href=\"subtle/trait.ConditionallyNegatable.html\" title=\"trait subtle::ConditionallyNegatable\">ConditionallyNegatable</a>,</span>"]],
+"subtle":[]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["atomic","The whole map is treated as one scalar value, and will be replaced with the new (non-[`None`]) value."],["granular","Each value will be merged separately."]]};

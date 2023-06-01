@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["FixedAny",""],["FixedTypeTag",""],["VecFixedAny",""]],"fn":[["float_to_fixed_ceil",""],["float_to_fixed_floor",""]],"trait":[["IsTagInstance",""]],"type":[["Fixed16",""],["Fixed32",""],["Fixed64",""]]};

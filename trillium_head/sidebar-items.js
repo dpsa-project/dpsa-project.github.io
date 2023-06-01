@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["Head","Trillium handler for HEAD requests"]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["Runtime","Enumeration for picking a runtime implementation."]],"struct":[["Metrics","Statistics regarding an object returned by the pool"],["PoolConfig","`Pool` configuration."],["Timeouts","Timeouts when getting `Object`s from a `Pool`."]]};

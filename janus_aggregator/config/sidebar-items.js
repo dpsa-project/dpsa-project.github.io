@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["CommonConfig","Configuration options common to all Janus binaries."],["DbConfig","Configuration for a Janus server using a database."],["JobDriverConfig","Non-secret configuration options for Janus Job Driver jobs."]],"trait":[["BinaryConfig","Trait describing configuration structures for various Janus binaries."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["fiat_secp256k1_dettman_mul","The function fiat_secp256k1_dettman_mul multiplies two field elements."],["fiat_secp256k1_dettman_square","The function fiat_secp256k1_dettman_square squares a field element."]]};

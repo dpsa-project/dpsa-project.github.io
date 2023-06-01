@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["basic","Returns a new builder using the provided checkpointer factory."]],"struct":[["BasicController","Organizes and synchronizes collection of metric data in both “pull” and “push” configurations."],["BasicControllerBuilder","Options for configuring a [`BasicController`]"]]};

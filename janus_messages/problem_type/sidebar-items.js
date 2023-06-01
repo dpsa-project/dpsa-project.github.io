@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["DapProblemType","Representation of the different problem types defined in Table 1 in §3.2."]],"struct":[["DapProblemTypeParseError","An error indicating a problem type URI was not recognized as a DAP problem type."]]};

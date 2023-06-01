@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["list","Strategies for merging [`Vec`]s."],["map","Strategies for merging `BTreeMap`s."]]};

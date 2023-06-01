@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["aggregator_handler","Constructs a Trillium handler for the aggregator."]]};

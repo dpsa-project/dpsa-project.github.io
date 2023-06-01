@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"trait":[["ReportIdChecksumExt","Additional methods for working with a [`ReportIdChecksum`]."]]};

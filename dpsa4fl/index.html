@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This crate allows developers to utilize our differentially private secure aggregation of gradient vectors to build federated machine learning systems. For an overview of the functionality see here. The reference implementation for using this crate are our python bindings."><meta name="keywords" content="rust, rustlang, rust-lang, dpsa4fl"><title>dpsa4fl - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../dpsa4fl/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../dpsa4fl/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate dpsa4fl</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.1.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#modules">Modules</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">dpsa4fl</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/dpsa4fl/lib.rs.html#1-114">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This crate allows developers to utilize our differentially private secure aggregation
+of gradient vectors to build federated machine learning systems.
+For an overview of the functionality see <a href="https://github.com/dpsa-project/overview">here</a>.
+The reference implementation for using this crate are our <a href="https://github.com/dpsa-project/dpsa4fl-bindings.py">python bindings</a>.</p>
+<h2 id="description-of-the-system"><a href="#description-of-the-system">Description of the system</a></h2>
+<p>We assume the existence of a federated machine learning framework, federated by a single server, henceforth “controller”.
+In a privacy-irrelevant setting, this server sees all client submitted gradients in plain text,
+which makes a variety of attacks possible to reconstruct original user data.
+dpsa4fl implements an alternative gradient aggregation mechanism which makes it possible
+to do federated ML in the case where the controller cannot be trusted.</p>
+<p>This is done by introducing two aggregator servers, both of which participate in the aggregation.
+By splitting the gradient vector, and sending half of its information to each aggregator, none of
+them has access to the plain text gradient. Both compute the sum of the gradients submitted by all
+clients and add noise. The reconstructed noised sum of client gradients is then collected by the
+controller. As long as at least one aggregator follows the protocol (e.g. is controlled by a trusted
+party), no participant (particularly neither the controller) has access to unnoised user data.</p>
+<h2 id="components"><a href="#components">Components</a></h2>
+<p>Our aggregation mechanism requires multiple components:</p>
+<ul>
+<li>Two aggregators, responsible for the aggregation and noising of gradients. The code for these
+is our <a href="https://github.com/dpsa-project/janus">janus fork</a>, as well as an accompanying <a href="janus_manager/interface/network/provider/index.html" title="crate::janus_manager::interface::network::provider">janus manager executable</a>. To setup a local instance of two configured aggregator servers, see the <a href="https://github.com/dpsa-project/dpsa4fl-infrastructure">infrastructure repo</a>.</li>
+<li>Code for the controller to talk with the aggregators, found in <a href="controller/index.html" title="crate::controller">crate::controller</a>.</li>
+<li>Code for the clients to talk with the aggregators, found in <a href="client/index.html" title="crate::client">crate::client</a>.</li>
+</ul>
+<h2 id="how-to-use-this-crate"><a href="#how-to-use-this-crate">How to use this crate</a></h2>
+<p>Assuming that a janus instance is running, this crate provides code for both controller and clients
+to communicate with it. The communication should follow the following protocol.</p>
+<ol>
+<li><strong>Init</strong>: Initializing of both controller and client state.</li>
+<li><strong>Create session</strong>: The controller requests a new training session on both aggregators.</li>
+<li><strong>Training round</strong>: Repeat the following:
+<ol>
+<li>The controller creates a training round and transmits the task id to the clients.</li>
+<li>The clients train on their local dataset and submit the resulting gradients to the aggregators.</li>
+<li>The controller collects the aggregated gradient vector from the leader aggregator.</li>
+</ol>
+</li>
+<li><strong>End session</strong>: End the training session.</li>
+</ol>
+<h3 id="1-init"><a href="#1-init">1. Init</a></h3>
+<p>An initial controller and client state has to be generated by calling <a href="controller/interface/embedded/fn.api_new_controller_state.html" title="controller::interface::embedded::api_new_controller_state">api_new_controller_state</a> and <a href="client/interface/embedded/fn.api_new_client_state.html" title="client::interface::embedded::api_new_client_state">api_new_client_state</a>, respectively.</p>
+<h3 id="2-create-session"><a href="#2-create-session">2. Create session</a></h3>
+<p>A training session stores configuration data persisting between individual training rounds.
+Before training can begin, a new session has to be created by the controller by calling <a href="controller/interface/embedded/fn.api_create_session.html" title="controller::interface::embedded::api_create_session">api_create_session</a>.</p>
+<h3 id="3-training-round"><a href="#3-training-round">3. Training round</a></h3>
+<p>First, the controller requests both aggregators to start a new round (<a href="controller/interface/embedded/fn.api_start_round.html" title="controller::interface::embedded::api_start_round">api_start_round</a>).
+The task id of this round
+has to be communicated to the clients. This has to be done indepedently of dpsa4fl, for example
+by utilizing the federation framework. Furthermore, the current gradient has to be communicated to the
+clients as well.</p>
+<div class="example-wrap"><pre class="language-text"><code>                        ┌─────────────────────┐
+                   ┌───►│ Aggregator (leader) │
+                   │    └─────────────────────┘
+ api_start_round() │
+                   │    ┌─────────────────────┐
+                   ├───►│ Aggregator (helper) │
+                   │    └─────────────────────┘
+                   │
+                   │
+  ┌──────────┐     │                                     ┌────────────┐
+  │Controller├─────┘                                     │ Clients... │
+  └─────┬────┘                                           └────────────┘
+        │                                                      ▲
+        │                                                      │
+        └──────────────────────────────────────────────────────┘
+            submit current gradient &amp; task id (out of band)
+</code></pre></div>
+<p>Once the clients have the current gradient, they can train on their local dataset.
+The resulting gradient is submitted to the aggregators by using the <a href="client/interface/embedded/fn.api_submit_with.html" title="client::interface::embedded::api_submit_with">api_submit_with</a>
+function which requires the task id of this round as argument. Meanwhile, the controller
+calls <a href="controller/interface/embedded/fn.api_collect.html" title="controller::interface::embedded::api_collect">api_collect</a> to wait for, and receive the aggregated gradients once they are
+computed by the aggregators.</p>
+<div class="example-wrap"><pre class="language-text"><code>                        ┌─────────────────────┐
+                   ┌────┤ Aggregator (leader) │◄────┐
+                   │    └─────────────────────┘     │
+     api_collect() │                                │ api_submit_with()
+                   │    ┌─────────────────────┐     │
+                   │    │ Aggregator (helper) │◄────┤
+                   │    └─────────────────────┘     │
+                   │                                │
+                   │                                │
+  ┌──────────┐     │                                │    ┌────────────┐
+  │Controller│◄────┘                                └────┤ Clients... │
+  └──────────┘                                           └────────────┘
+</code></pre></div><h3 id="4-end-session"><a href="#4-end-session">4. End session</a></h3>
+<p>After successfull completion of learning, the persistent state has to be deleted by calling <a href="controller/interface/embedded/fn.api_end_session.html" title="controller::interface::embedded::api_end_session">api_end_session</a>.</p>
+</div></details><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="mod" href="client/index.html" title="dpsa4fl::client mod">client</a></div><div class="item-right docblock-short">API for clients. This is for getting configuration from the aggregation servers and submitting
+gradients.</div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="controller/index.html" title="dpsa4fl::controller mod">controller</a></div><div class="item-right docblock-short">API for the controller. This is for managing dpsa4fl-janus sessions, and collecting aggregated
+gradients.</div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="core/index.html" title="dpsa4fl::core mod">core</a></div><div class="item-right docblock-short">Definitions of core datastructures.</div></div><div class="item-row"><div class="item-left module-item"><a class="mod" href="janus_manager/index.html" title="dpsa4fl::janus_manager mod">janus_manager</a></div><div class="item-right docblock-short">API of the janus manager.</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="dpsa4fl" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>

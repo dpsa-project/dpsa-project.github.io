@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["poll_fn","Creates a new future wrapping around a function returning [`Poll`]."]],"mod":[["future","Asynchronous basic functionality."],["pin","Types that pin data to its location in memory."],["result","Error handling with the `Result` type."],["task","Types and Traits for working with asynchronous tasks."]]};

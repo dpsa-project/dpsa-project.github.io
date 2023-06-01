@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["Basic","Type that performs basic authorization."],["Bearer","Type that performs “bearer token” authorization."]]};

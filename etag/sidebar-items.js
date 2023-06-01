@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["ParseError","Describes possible errors for EntityTag"]],"struct":[["EntityTag","An entity tag, defined in RFC7232"]]};

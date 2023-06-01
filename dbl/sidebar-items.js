@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"trait":[["Dbl","Double and inverse double over GF(2^n)."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["text_format_handler","Creates a handler that responds to GET requests for “/metrics”."]]};

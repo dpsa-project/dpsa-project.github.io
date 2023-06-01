@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["NoopAsyncInstrument","A no-op async instrument."],["NoopMeterCore","A no-op instance of a `Meter`"],["NoopMeterProvider","A no-op instance of a `MetricProvider`"],["NoopSyncInstrument","A no-op sync instrument"]]};

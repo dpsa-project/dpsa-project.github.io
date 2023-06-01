@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["api_new_client_state","Create a new client state."],["api_submit_with","Submit gradients to the aggregators."],["api_update_client_round_settings","Configure the client state for a given round."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["PoolError","Possible errors of `Pool::get()` operation."]],"struct":[["Object","Wrapper around the actual pooled object which implements [`Deref`], [`DerefMut`] and [`Drop`] traits."],["Pool","Generic object and connection pool. This is the static version of the pool which doesn’t include."],["PoolConfig","Pool configuration."]]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["histogram","A simple aggregator selector that uses histogram aggregators for `Histogram` instruments."],["inexpensive","This selector is faster and uses less memory than the others in this package."]]};

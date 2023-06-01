@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["metrics","constructs a [`Metrics`] handler. alias for [`Metrics::new`]"]],"struct":[["Metrics","Trillium handler that instruments http.server.duration, http.server.request.size, and http.server.response.size as per semantic conventions for http."]]};

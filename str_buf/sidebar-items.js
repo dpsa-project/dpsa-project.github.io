@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":[["StrBufError","`StrBuf` conversion error"]],"struct":[["StrBuf","Stack based string."]]};

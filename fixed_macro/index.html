@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="This library provides `fixed!`, a proc-macro that allows easily creating fixed-point constants for all of the fixed-point types provided in `fixed` crate."><meta name="keywords" content="rust, rustlang, rust-lang, fixed_macro"><title>fixed_macro - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../fixed_macro/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../fixed_macro/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate fixed_macro</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 1.2.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#modules">Modules</a></li><li><a href="#macros">Macros</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">fixed_macro</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/fixed_macro/lib.rs.html#1-86">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>This library provides <a href="macro.fixed.html"><code>fixed!</code></a>, a proc-macro that allows
+easily creating fixed-point constants for all of the fixed-point types provided in
+<a href="https://docs.rs/fixed"><code>fixed</code></a> crate.</p>
+<div class="example-wrap"><pre class="language-toml"><code>[dependencies]
+fixed-macro = &quot;1.1&quot;
+</code></pre></div>
+<p><em>Compiler support: rustc 1.45+.</em></p>
+<h3 id="details"><a href="#details">Details</a></h3>
+<ul>
+<li>The syntax of the macro is as follows:</li>
+</ul>
+
+<div class="example-wrap ignore"><div class='tooltip'>ⓘ</div><pre class="rust rust-example-rendered"><code><span class="macro">fixed!</span>(&lt;value&gt;: &lt;<span class="kw">type</span>&gt;)</code></pre></div>
+<p>where <code>&lt;value&gt;</code> is an integer literal or a float literal, and <code>&lt;type&gt;</code> is either of the
+form <code>I&lt;i&gt;F&lt;f&gt;</code> or <code>U&lt;i&gt;F&lt;f&gt;</code>, matching one of the type aliases provided in
+<a href="https://docs.rs/fixed/latest/fixed/types/index.html"><code>fixed::types</code></a>. Note in particular that <code>&lt;value&gt;</code> has to be a literal and
+not an arbitrary arithmetic expression, and that <code>&lt;type&gt;</code> is considered a special identifier,
+so that it doesn’t have to be imported first.</p>
+<ul>
+<li>Create a fixed-point constant which is parsed at compile time (the same syntax for int
+and float literals is supported as in Rust itself, including underscores and scientific
+notation):</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>fixed_macro::fixed;
+<span class="kw">use </span>fixed::types::U8F8;
+
+<span class="kw">let </span>x1 = <span class="macro">fixed!</span>(-<span class="number">1.23</span>: I32F32);         <span class="comment">// float literal (note, the type is not in scope)
+</span><span class="kw">const </span>X2: U8F8 = <span class="macro">fixed!</span>(<span class="number">1.2</span>: U8F8);     <span class="comment">// can be used to initialize const values
+</span><span class="kw">let </span>x3 = <span class="macro">fixed!</span>(<span class="number">123</span>: U8F8);             <span class="comment">// decimal integers work as well
+</span><span class="kw">let </span>x4 = <span class="macro">fixed!</span>(<span class="number">0x7B</span>: U8F8);            <span class="comment">// and hex/oct/bin integers too
+</span><span class="kw">let </span>x5 = <span class="macro">fixed!</span>(<span class="number">1_234.567_890</span>: I32F32); <span class="comment">// underscores are ignored, same as in rustc
+</span><span class="kw">let </span>x7 = <span class="macro">fixed!</span>(<span class="number">0.12e+01</span>: U8F8);        <span class="comment">// scientific notation is also supported</span></code></pre></div>
+<ul>
+<li>For each type alias from <a href="https://docs.rs/fixed/latest/fixed/types/index.html"><code>fixed::types</code></a>, there is a macro with a matching
+name in <a href="types/index.html"><code>fixed_macro::types</code></a> which you can use without specifying the type name:</li>
+</ul>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>fixed_macro::types::I16F48;
+
+<span class="kw">let </span>a1 = <span class="macro">I16F48!</span>(-<span class="number">1.23</span>);</code></pre></div>
+<p>Both the macro and the type can happily coexist in the same scope:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>fixed::types::I16F48;
+<span class="kw">use </span>fixed_macro::types::I16F48;
+
+<span class="kw">const </span>B1: I16F48 = <span class="macro">I16F48!</span>(<span class="number">1.23e-2</span>);</code></pre></div>
+<p>You can choose to import both under different (or same) user-defined names:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>fixed::types::{I16F48 <span class="kw">as </span>Decimal};
+<span class="kw">use </span>fixed_macro::types::{I16F48 <span class="kw">as </span>dec};
+
+<span class="kw">let </span>c1 = <span class="macro">dec!</span>(<span class="number">12_345</span>);
+<span class="kw">const </span>C2: Decimal = <span class="macro">dec!</span>(-<span class="number">0.123_456</span>);</code></pre></div>
+</div></details><h2 id="modules" class="small-section-header"><a href="#modules">Modules</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="mod" href="types/index.html" title="fixed_macro::types mod">types</a></div><div class="item-right docblock-short">Macros allowing to create constants for each available fixed-point type.</div></div></div><h2 id="macros" class="small-section-header"><a href="#macros">Macros</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="macro" href="macro.fixed.html" title="fixed_macro::fixed macro">fixed</a></div><div class="item-right docblock-short">Create a fixed-point constant value which is parsed at compile time.</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="fixed_macro" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>

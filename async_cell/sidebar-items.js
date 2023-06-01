@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["sync","Types which can be shared across threads."],["unsync","Types for single-threaded and no_std use."]]};

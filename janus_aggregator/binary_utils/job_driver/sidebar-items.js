@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["JobDriver","Periodically seeks incomplete jobs in the datastore and drives them concurrently."]]};

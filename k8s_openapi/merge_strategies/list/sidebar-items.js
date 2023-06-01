@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["atomic","The whole list is treated as one scalar value, and will be replaced with the new (non-[`None`]) value."],["map","The list is treated as a map."],["set","The list is treated as a set."]]};

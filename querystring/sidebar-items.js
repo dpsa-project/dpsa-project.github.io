@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["querify","Parses a given query string back into a vector of key-value pairs. Extra/invalid strings will be ignored."],["stringify","Produces a URL query string from a given query by iterating through the vec."]],"type":[["QueryParam",""],["QueryParams",""]]};

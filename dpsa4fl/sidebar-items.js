@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":[["client","API for clients. This is for getting configuration from the aggregation servers and submitting gradients."],["controller","API for the controller. This is for managing dpsa4fl-janus sessions, and collecting aggregated gradients."],["core","Definitions of core datastructures."],["janus_manager","API of the janus manager."]]};

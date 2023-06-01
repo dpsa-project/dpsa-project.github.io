@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["WakerSet","A set holding wakers."]]};

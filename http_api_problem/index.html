@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="HTTP-API-PROBLEM"><meta name="keywords" content="rust, rustlang, rust-lang, http_api_problem"><title>http_api_problem - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../crates.js"></script><script defer src="../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="logo-container" href="../http_api_problem/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2></h2></nav><nav class="sidebar"><a class="logo-container" href="../http_api_problem/index.html"><img class="rust-logo" src="../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><h2 class="location"><a href="#">Crate http_api_problem</a></h2><div class="sidebar-elems"><ul class="block"><li class="version">Version 0.56.0</li><li><a id="all-types" href="all.html">All Items</a></li></ul><section><ul class="block"><li><a href="#structs">Structs</a></li><li><a href="#statics">Statics</a></li></ul></section></div></nav><main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Crate <a class="mod" href="#">http_api_problem</a><button id="copy-path" onclick="copy_path(this)" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="srclink" href="../src/http_api_problem/lib.rs.html#1-1081">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h2 id="http-api-problem"><a href="#http-api-problem">HTTP-API-PROBLEM</a></h2>
+<p><a href="https://crates.io/crates/http-api-problem"><img src="https://img.shields.io/crates/v/http-api-problem.svg" alt="crates.io" /></a>
+<a href="https://docs.rs/http-api-problem"><img src="https://docs.rs/http-api-problem/badge.svg" alt="docs.rs" /></a>
+<a href="https://crates.io/crates/http-api-problem"><img src="https://img.shields.io/crates/d/http-api-problem.svg" alt="downloads" /></a>
+<img src="https://github.com/chridou/http-api-problem/workflows/CI/badge.svg" alt="CI" />
+<a href="https://github.com/chridou/http-api-problem/blob/master/LICENSE-MIT"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="license-mit" /></a>
+<a href="https://github.com/chridou/http-api-problem/blob/master/LICENSE-APACHE"><img src="http://img.shields.io/badge/license-APACHE-blue.svg" alt="license-apache" /></a></p>
+<p>A library to create HTTP response content for APIs based on
+<a href="https://tools.ietf.org/html/rfc7807">RFC7807</a>.</p>
+<h3 id="usage"><a href="#usage">Usage</a></h3>
+<p>Get the latest version for your <code>Cargo.toml</code> from
+<a href="https://crates.io/crates/http-api-problem">crates.io</a>.</p>
+<p>Add this to your crate root:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>http_api_problem;</code></pre></div>
+<h3 id="serde"><a href="#serde">serde</a></h3>
+<p><a href="struct.HttpApiProblem.html" title="HttpApiProblem">HttpApiProblem</a> implements <a href="../serde/ser/trait.Serialize.html" title="Serialize">Serialize</a> and <a href="../serde/de/trait.Deserialize.html" title="Deserialize">Deserialize</a> for
+<a href="struct.HttpApiProblem.html" title="HttpApiProblem">HttpApiProblem</a>.</p>
+<h3 id="examples"><a href="#examples">Examples</a></h3>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>http_api_problem::<span class="kw-2">*</span>;
+
+<span class="kw">let </span>p = HttpApiProblem::new(StatusCode::UNPROCESSABLE_ENTITY)
+    .title(<span class="string">&quot;You do not have enough credit.&quot;</span>)
+    .detail(<span class="string">&quot;Your current balance is 30, but that costs 50.&quot;</span>)
+    .type_url(<span class="string">&quot;https://example.com/probs/out-of-credit&quot;</span>)
+    .instance(<span class="string">&quot;/account/12345/msgs/abc&quot;</span>);
+
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(StatusCode::UNPROCESSABLE_ENTITY), p.status);
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;You do not have enough credit.&quot;</span>), p.title.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Your current balance is 30, but that costs 50.&quot;</span>), p.detail.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;https://example.com/probs/out-of-credit&quot;</span>), p.type_url.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;/account/12345/msgs/abc&quot;</span>), p.instance.as_deref());</code></pre></div>
+<p>There is also <code>TryFrom&lt;u16&gt;</code> implemented for <a href="struct.StatusCode.html" title="StatusCode">StatusCode</a>:</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>http_api_problem::<span class="kw-2">*</span>;
+
+<span class="kw">let </span>p = HttpApiProblem::try_new(<span class="number">422</span>).unwrap()
+    .title(<span class="string">&quot;You do not have enough credit.&quot;</span>)
+    .detail(<span class="string">&quot;Your current balance is 30, but that costs 50.&quot;</span>)
+    .type_url(<span class="string">&quot;https://example.com/probs/out-of-credit&quot;</span>)
+    .instance(<span class="string">&quot;/account/12345/msgs/abc&quot;</span>);
+
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(StatusCode::UNPROCESSABLE_ENTITY), p.status);
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;You do not have enough credit.&quot;</span>), p.title.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;Your current balance is 30, but that costs 50.&quot;</span>), p.detail.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;https://example.com/probs/out-of-credit&quot;</span>), p.type_url.as_deref());
+<span class="macro">assert_eq!</span>(<span class="prelude-val">Some</span>(<span class="string">&quot;/account/12345/msgs/abc&quot;</span>), p.instance.as_deref());</code></pre></div>
+<h3 id="status-codes"><a href="#status-codes">Status Codes</a></h3>
+<p>The specification does not require the <a href="struct.HttpApiProblem.html" title="HttpApiProblem">HttpApiProblem</a> to contain a
+status code. Nevertheless this crate supports creating responses
+for web frameworks. Responses require a status code. If no status code
+was set on the <a href="struct.HttpApiProblem.html" title="HttpApiProblem">HttpApiProblem</a> <code>500 - Internal Server Error</code> will be
+used as a fallback. This can be easily avoided by only using those constructor
+functions which require a <a href="struct.StatusCode.html" title="StatusCode">StatusCode</a>.</p>
+<h3 id="features"><a href="#features">Features</a></h3><h4 id="jsonschema"><a href="#jsonschema">JsonSchema</a></h4>
+<p>The feature <code>json-schema</code> enables a derived implementation for
+JsonSchema, via <code>schemars</code>.</p>
+<h4 id="web-frameworks"><a href="#web-frameworks">Web Frameworks</a></h4>
+<p>There are multiple features to integrate with web frameworks:</p>
+<ul>
+<li><code>axum</code></li>
+<li><code>warp</code></li>
+<li><code>hyper</code></li>
+<li><code>actix-web</code></li>
+<li><code>salvo</code></li>
+<li><code>tide</code></li>
+<li><code>rocket (v0.5.0-rc1)</code></li>
+</ul>
+<p>These mainly convert the <code>HttpApiProblem</code> to response types of
+the frameworks and implement traits to integrate with the frameworks
+error handling.</p>
+<p>Additionally, the feature <code>rocket-okapi</code> (which implies the features
+<code>rocket</code> and <code>json-schema</code>) implements <code>rocket_okapi</code>’s <code>OpenApiResponder</code>
+for the json schema generated by the <code>json-schema</code> feature.</p>
+<h4 id="apierror"><a href="#apierror">ApiError</a></h4>
+<p>The feature <code>api-error</code> enables a structure which can be
+return from “api handlers” that generate responses and can be
+converted into an <code>HttpApiProblem</code>.</p>
+<h3 id="license"><a href="#license">License</a></h3>
+<p><code>http-api-problem</code> is primarily distributed under the terms of both the MIT
+license and the Apache License (Version 2.0).</p>
+<p>Copyright (c) 2017 Christian Douven.</p>
+</div></details><h2 id="structs" class="small-section-header"><a href="#structs">Structs</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.HttpApiProblem.html" title="http_api_problem::HttpApiProblem struct">HttpApiProblem</a></div><div class="item-right docblock-short">Description of a problem that can be returned by an HTTP API
+based on <a href="https://tools.ietf.org/html/rfc7807">RFC7807</a></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.InvalidStatusCode.html" title="http_api_problem::InvalidStatusCode struct">InvalidStatusCode</a></div><div class="item-right docblock-short">A possible error value when converting a <code>StatusCode</code> from a <code>u16</code> or <code>&amp;str</code></div></div><div class="item-row"><div class="item-left module-item"><a class="struct" href="struct.StatusCode.html" title="http_api_problem::StatusCode struct">StatusCode</a></div><div class="item-right docblock-short">An HTTP status code (<code>status-code</code> in RFC 7230 et al.).</div></div></div><h2 id="statics" class="small-section-header"><a href="#statics">Statics</a></h2><div class="item-table"><div class="item-row"><div class="item-left module-item"><a class="static" href="static.PROBLEM_JSON_MEDIA_TYPE.html" title="http_api_problem::PROBLEM_JSON_MEDIA_TYPE static">PROBLEM_JSON_MEDIA_TYPE</a></div><div class="item-right docblock-short">The recommended media type when serialized to JSON</div></div></div></section></div></main><div id="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="http_api_problem" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>

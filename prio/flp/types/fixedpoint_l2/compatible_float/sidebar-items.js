@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"trait":[["CompatibleFloat","Assign a `Float` type to this type and describe how to represent this type as an integer of the given field, and how to represent a field element as the assigned `Float` type."]]};

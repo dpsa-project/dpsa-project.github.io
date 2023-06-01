@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":[["CollectionJobDriver","Drives a collection job."]]};
